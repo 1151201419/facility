@@ -1,0 +1,76 @@
+<%- include('partials/header') %>
+<body>
+<%- include('partials/banner') %>
+<%- include('partials/nav') %>
+<h2 class="title">Complaint List page</h2>
+
+<!--- THIS IS content--->
+
+  <div class="tab">
+  <button class="tablinks" onclick="openDetail(event, 'All')" id="defaultOpen">All</button>
+  <% status.forEach(function(status){%>
+    <button class="tablinks" onclick="openDetail(event, '<%= status.statusId  %>')"><%= status.statusTitle  %></button>
+<% }) %>
+</div>
+
+<div id="All" class="tabcontent">
+  <div class="container ">
+    <h3>All</h3>
+    <p>Display all status</p>
+    <table class="table table-responsive table-hover table-sm table-bordered">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>createby</th>
+        <th>time</th>
+        <th>Days</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% complaints.forEach(function(complaints){%>
+      <tr>
+        <td><%= complaints.complaintId %></td>
+        <td><%= complaints.complaintTitle %></td>
+        <td><%= complaints.complaintType %></td>
+        <td><%= formatDate(complaints.createDate,0) %></td>
+        <td><%= Math.round(Math.abs((complaints.createDate-(Date.now()))/(24 * 60 * 60 * 1000)))%></td>
+        <td><a href='viewcomplaint?id=<%= complaints.complaintId %>'>View</a>   <a href='#'>delete</a></td>
+      </tr>
+<% }) %>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<% status.forEach(function(status){%>
+  <div id="<%= status.statusId %>" class="tabcontent">
+    <h3><%= status.statusTitle %></h3>
+    <p>Display all <%= status.statusTitle %></p>
+    <table class="table table-responsive table-hover table-sm table-bordered">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>createby</th>
+        <th>time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% complaints.forEach(function(complaints){
+        if(status.statusId==complaints.updateStatus){%>
+      <tr>
+        <td><%= complaints.complaintId %></td>
+        <td><%= complaints.complaintTitle %></td>
+        <td><%= complaints.complaintType %></td>
+        <td><%= complaints.createDate.toLocaleString() %></td>
+      </tr>
+    <% }}) %>
+    </tbody>
+    </table>
+  </div>
+<% }) %>
+
+
+<%- include('partials/footer') %>

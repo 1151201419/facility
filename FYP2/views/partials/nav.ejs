@@ -1,0 +1,49 @@
+
+<nav class="navbar  navbar-toggleable-md navbar-light bg-light sticky-top"style="background-color: #e3f2fd;">
+<!---<a class="navbar-brand" href="#">Navbar</a>-->
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="/auth/home">home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/auth/complaint">complaint</a> <!--<span class="sr-only">(current)</span>-->
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/auth/userlist">userlist</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/auth/report">Report</a>
+    </li>
+    </ul>
+    <ul class="navbar-nav  navbar-right">
+    <li class="nav-item">
+      <a class="nav-link profiletab" href="#">Welcome back,<%= tagline %>! </a>
+      </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">logout</a>
+          </li>
+        </ul>
+</div>
+</nav>
+<script>
+  (function()
+  {
+    if( window.localStorage )
+    {
+      if( !localStorage.getItem('firstLoad') )
+      {
+        localStorage['firstLoad'] = true;
+        window.location.reload();
+        console.log("refreshhhhhhhh");
+      }
+      else
+        localStorage.removeItem('firstLoad');
+          console.log("xxxxx refreshhhhhhhh");
+    }
+  })();
+</script>

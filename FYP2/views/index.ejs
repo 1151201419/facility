@@ -1,0 +1,41 @@
+<%- include('partials/header') %>
+<body>
+<%- include('partials/banner') %>
+<%- include('partials/nav') %>
+ <div class="container">
+   <div class="row">
+     <div class="col-sm-6 col-xl-4">
+       <div class="card" >
+         <img src="file.png" class="card-img-top rounded mx-auto d-block" alt="" style="width: 30%; position: center;">
+         <div class="card-body">
+           <h5 class="card-title">Incomplete Complaint</h5>
+           <h6 class="card-subtitle mb-2 text-muted">Left : 2</h6>
+           <a href="#" class="card-link">Another link</a>
+         </div>
+       </div>
+     </div>
+     <div class="col-sm-6 col-xl-4">
+       <div class="card">
+         <img src="file.png" class="card-img-top rounded mx-auto d-block" alt="" style="width: 30%; position: center;">
+         <div class="card-body">
+           <h5 class="card-title">Incomplete Task</h5>
+           <h6 class="card-subtitle mb-2 text-muted">Left : 2</h6>
+           <a href="#" class="card-link">Card link</a>
+         </div>
+       </div>
+     </div>
+
+
+     <div class="col-sm-6 col-xl-4">
+       <div class="card" >
+         <div class="card-body">
+           <h5 class="card-title">Calender</h5>
+            <span id="date_time"></span>
+            <script type="text/javascript">window.onload = date_time('date_time');</script>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+<%- include('partials/footer') %>
